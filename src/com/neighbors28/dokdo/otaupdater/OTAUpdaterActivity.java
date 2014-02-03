@@ -361,7 +361,7 @@ public class OTAUpdaterActivity extends PreferenceActivity {
 
                 final ProgressDialog progressDialog = new ProgressDialog(OTAUpdaterActivity.this);
                 progressDialog.setTitle(R.string.alert_downloading);
-                progressDialog.setMessage(R.string.alert_unsupported_message);
+                progressDialog.setMessage(getString(R.string.alert_unsupported_message));
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 progressDialog.setCancelable(false);
                 progressDialog.setProgress(0);
