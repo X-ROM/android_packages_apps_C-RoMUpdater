@@ -16,12 +16,8 @@
 -->
 
 <resources>
-
-    <string name="app_name">소프트웨어 업데이트</string>
-    
     <string name="notif_text_rom">독도프로젝트 업데이트가 있습니다.</string>
     <string name="notif_source">소프트웨어 업데이트</string>
-    
     <string name="alert_nodata_title">데이터 네트워크를 사용할 수 없습니다.</string>
     <string name="alert_nodata_message">데이터 네트워크에 연결할 수 없습니다.\nWi-Fi나 데이터 네트워크를 켠 후 새로운 업데이트를 다운로드 하거나 업데이트를 확인하세요!</string>
     <string name="alert_nowifi_title">Wi-Fi가 연결되지 않았습니다!</string>
@@ -45,12 +41,10 @@
     <string name="alert_unsupported_title">지원되지 않는 장치</string>
     <string name="alert_unsupported_message">이 장치는 독도프로젝트에서 정식으로 지원하는 기기가 아닙니다.</string>
     <string name="alert_update_to">이 업데이트는 사용자 기기에 설치된 독도프로젝트를 새로운 버전인 [%2$s] 로 업데이트합니다.</string>
-    
     <string name="menu_view">다운로드된 소프트웨어</string>
     <string name="menu_settings">설정</string>
     <string name="menu_refresh">새로고침</string>
     <string name="menu_prune">오래된 파일 삭제</string>
-    
     <string name="toast_rename">파일 이름 수정이 완료되었습니다!</string>
     <string name="toast_rename_error">파일 이름을 수정하는 도중에 문제가 생겼습니다.</string>
     <string name="toast_delete">파일이 삭제되었습니다.</string>
@@ -59,23 +53,21 @@
     <string name="toast_prune_error">파일(들)을 삭제하는 도중에 문제가 생겼습니다</string>
     <string name="toast_no_updates">현재 업데이트가 없습니다.</string>
     <string name="toast_fetch_error">OTA 정보를 받아오는데 문제가 생겼습니다.</string>
-    <string name="toast_download_nospace">SDcard에 용량이 부족합니다!</string>
+    <string name="toast_download_nospace">저장소 용량이 부족합니다!</string>
     <string name="toast_download_interrupted">다운로드를 실패하였습니다!</string>
-    <string name="toast_download_md5_mismatch">MD5 error - 다운로드 파일 인식 불가!</string>
+    <string name="toast_download_md5_mismatch">MD5 ERROR: 업데이트파일의 해쉬값이 올바르지 않습니다. 관리자에게 문의해주세요.</string>
     <string name="toast_download_error">다운로드 중에 에러가 있었습니다!</string>
-    <string name="toast_nosd_shared">현재 SDcard가 없습니다. - Usb로 마운트가 되있습니다.</string>
-    <string name="toast_nosd_error">현제 SDcard가 없습니다.</string>
-    
+    <string name="toast_nosd_shared">현재 SDCARD가 없습니다. - USB로 마운트가 되있습니다.</string>
+    <string name="toast_nosd_error">현제 SDCARD가 없습니다.</string>
     <string name="main_device_info">디바이스 정보</string>
-    <string name="main_device">모델 넘버</string>
+    <string name="main_device">모델명</string>
     <string name="main_rom">빌드 넘버</string>
     <string name="main_version">독도프로젝트 버전</string>
     <string name="main_updates">업데이트</string>
     <string name="main_avail_updates">업데이트 확인</string>
     <string name="main_updates_none">사용 가능한 업데이트가 없습니다.</string>
     <string name="main_updates_error">업데이트 정보를 받아오는데 문제가 생겼습니다: %1$s</string>
-    <string name="main_updates_new">새로운 업데이트: Dokdo-Project version %2$s</string>
-    
+    <string name="main_updates_new">새로운 버전의 소프트웨어가 있습니다: Dokdo-Project [version %2$s]</string>
     <string name="settings_notifications">알림 설정</string>
     <string name="display_notifications">알림 보이기</string>
     <string name="notify_default">알림이 현재 켜져있습니다.</string>
