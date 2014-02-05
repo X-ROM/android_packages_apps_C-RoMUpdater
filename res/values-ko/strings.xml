@@ -32,12 +32,12 @@
     <string name="alert_rename">이름 수정</string>
     <string name="alert_install_title">ZIP 파일 설치</string>
     <string name="alert_install">설치</string>
-    <string name="alert_install_message">업데이트를 설치하면 기기가 복구모드로 진입해서 업데이트를 진행하고 설치가 끝나면, 시스템이 자동으로 다시 시작됩니다.</string>
+    <string name="alert_install_message">업데이트 설치파일이 다운로드되었습니다. 설치를 진행하시면 기기가 리커버리모드로 재부팅됩니다. 리커버리모드에서 다운로드된 업데이트 설치파일을 설치해주세요! 업데이트 설치파일은 다음 경로에 있습니다. : %1$s </string>
     <string name="alert_noinstall_message">이 기기는 수동으로 업데이트를 설치해야 합니다.\n복구모드에서 수동으로 업데이트를 진행하시기 바랍니다.\n\n새로운 업데이트 설치파일은 다음 경로에 있습니다. : %1$s </string>
     <string name="alert_update_title">독도프로젝트 업데이트가 있습니다</string>
     <string name="alert_download">다운로드</string>
     <string name="alert_downloading">다운로드중&#8230;</string>
-    <string name="alert_message">업데이트 소프트웨어를 다운로드하고 설치하실 때 Gapps를 반드시 함께 설치해주세요. 일부기기는 기기전용 패치파일도 함께 설치하셔야합니다!</string>
+    <string name="alert_message">업데이트 소프트웨어를 다운로드하고 설치하실 때 Gapps를 반드시 함께 설치해주세요. 일부기기는 기기전용 패치파일이나 커널도 함께 설치하셔야합니다!</string>
     <string name="alert_unsupported_title">지원되지 않는 장치</string>
     <string name="alert_unsupported_message">이 장치는 독도프로젝트에서 정식으로 지원하는 기기가 아닙니다.</string>
     <string name="alert_update_to">이 업데이트는 사용자 기기에 설치된 독도프로젝트를 새로운 버전인 [%2$s] 로 업데이트합니다.</string>
