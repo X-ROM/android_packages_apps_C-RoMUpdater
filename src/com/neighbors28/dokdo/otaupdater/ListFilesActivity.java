@@ -209,108 +209,35 @@ public class ListFilesActivity extends ListActivity implements AdapterView.OnIte
     }
 
     protected static void installFileDialog(final Context ctx, final File file) {
-        Resources r = ctx.getResources();
-        String[] installOpts = r.getStringArray(R.array.install_options);
-        final boolean[] selectedOpts = new boolean[installOpts.length];
-        selectedOpts[selectedOpts.length - 1] = true;
-
         AlertDialog.Builder alert = new AlertDialog.Builder(ctx);
         alert.setTitle(R.string.alert_install_title);
-//        alert.setMessage(R.string.alert_install_message);
-        if (Utils.getNoflash()) { //can't flash programmatically, must flash manually
-            alert.setMessage(ctx.getString(R.string.alert_noinstall_message, file.getAbsolutePath()));
-            alert.setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-        } else {
-            alert.setMultiChoiceItems(installOpts, selectedOpts, new DialogInterface.OnMultiChoiceClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                    selectedOpts[which] = isChecked;
-                }
-            });
-            alert.setPositiveButton(R.string.alert_install, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-
-                    AlertDialog.Builder alert = new AlertDialog.Builder(ctx);
-                    alert.setTitle(R.string.alert_install_title);
-                    alert.setMessage(R.string.alert_install_message);
-                    alert.setPositiveButton(R.string.alert_install, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            try {
-                                String name = file.getName();
-
-                                Process p = Runtime.getRuntime().exec("su");
-                                DataOutputStream os = new DataOutputStream(p.getOutputStream());
-                                os.writeBytes("rm -f /cache/recovery/command\n");
-                                os.writeBytes("rm -f /cache/recovery/extendedcommand\n");
-//                                if (selectedOpts[0]) {
-//                                    os.writeBytes("echo 'backup_rom /sdcard/clockwordmod/backup/" +
-//                                            new SimpleDateFormat("yyyy-MM-dd_HH.mm").format(new Date()) +
-//                                            "' >> /cache/recovery/extendedcommand\n");
-//                                }
-                                if (Build.MANUFACTURER.toLowerCase().contains("sony")) {
-                                    if (selectedOpts[0]) {
-                                        os.writeBytes("echo 'format(\"/data\");' >> /cache/recovery/extendedcommand\n");
-                                    }
-                                    if (selectedOpts[1]) {
-                                        os.writeBytes("echo 'format(\"/cache\");' >> /cache/recovery/extendedcommand\n");
-                                    }
-
-                                    os.writeBytes("echo 'install_zip(\"/" + Utils.getRcvrySdPath() + "/DokdoOTA/download/" + name + "\");' >> /cache/recovery/extendedcommand\n");
-                                } else {
-                                    if (selectedOpts[0]) {
-                                        os.writeBytes("echo '--wipe_data' >> /cache/recovery/command\n");
-                                    }
-                                    if (selectedOpts[1]) {
-                                        os.writeBytes("echo '--wipe_cache' >> /cache/recovery/command\n");
-                                    }
-
-                                    os.writeBytes("echo '--update_package=/" + Utils.getRcvrySdPath() + "/DokdoOTA/download/" + name + "' >> /cache/recovery/command\n");
-                                }
-
-                                os.writeBytes("sync\n");
-                                
-                                String rebootCmd = Utils.getRebootCmd();
-                                if (!rebootCmd.equals("$$NULL$$")) {
-                                    if (rebootCmd.endsWith(".sh")) {
-                                        os.writeBytes("sh " + rebootCmd + "\n");
-                                    } else {
-                                        os.writeBytes(rebootCmd + "\n");
-                                    }
-                                }
-                                os.writeBytes("sync\n");
-                                os.writeBytes("exit\n");
-                                os.flush();
-                                p.waitFor();
-                                ((PowerManager) ctx.getSystemService(POWER_SERVICE)).reboot("recovery");
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+        alert.setMessage(R.string.alert_install_message);
+        alert.setPositiveButton(R.string.alert_install, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                try {
+                    Process p = Runtime.getRuntime().exec("su");
+                    DataOutputStream os = new DataOutputStream(p.getOutputStream());
+                    String rebootCmd = Utils.getRebootCmd();
+                    if (!rebootCmd.equals("$$NULL$$")) {
+                    if (rebootCmd.endsWith(".sh")) {
+                        os.writeBytes("sh " + rebootCmd + "\n");
+                    } else {
+                        os.writeBytes(rebootCmd + "\n");
                         }
-                    });
-                    alert.setNegativeButton(R.string.alert_cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    alert.create().show();
+                    }
+                    ((PowerManager) ctx.getSystemService(POWER_SERVICE)).reboot("recovery");
+                    } catch (Exception e) {
+                      e.printStackTrace();
+                    }
                 }
             });
             alert.setNegativeButton(R.string.alert_cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-        }
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
         alert.create().show();
     }
 

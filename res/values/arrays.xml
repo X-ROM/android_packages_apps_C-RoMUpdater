@@ -22,12 +22,6 @@
         <item>Delete</item>
     </string-array>
     
-    <string-array name="install_options">
-        <!-- <item>Backup First</item> -->
-        <item>Wipe Data</item>
-        <item>Wipe Cache</item>
-    </string-array>
-    
     <string-array name="file_ages">
         <item>1 week</item>
         <item>2 weeks</item>
