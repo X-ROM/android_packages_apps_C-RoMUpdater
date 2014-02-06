@@ -210,7 +210,7 @@ public class ListFilesActivity extends ListActivity implements AdapterView.OnIte
 
     protected static void installFileDialog(final Context ctx, final File file) {
         AlertDialog.Builder alert = new AlertDialog.Builder(ctx);
-        alert.setTitle(R.string.alert_install_title);
+        alert.setTitle(R.string.alert_install);
         alert.setMessage(R.string.alert_install_message);
         alert.setPositiveButton(R.string.alert_install, new DialogInterface.OnClickListener() {
             @Override
